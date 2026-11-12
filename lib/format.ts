@@ -1,0 +1,26 @@
+const monthYear = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  year: "numeric",
+  timeZone: "UTC",
+});
+
+/** "2023-10" → "Oct 2023"; "2019" → "2019". */
+export function formatPeriod(iso: string): string {
+  return /^\d{4}$/.test(iso) ? iso : monthYear.format(new Date(`${iso}-01T00:00:00Z`));
+}
+
+/** "What I designed/built" → "what-i-designed-built" */
+export function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+/** "2023-10", null → "2023 – now"; "2019", "2019" → "2019". */
+export function formatYears(start: string, end: string | null): string {
+  const from = start.slice(0, 4);
+  if (end === null) return `${from} – now`;
+  const to = end.slice(0, 4);
+  return from === to ? from : `${from} – ${to}`;
+}
