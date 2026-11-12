@@ -1,5 +1,5 @@
 import { Container } from "@/components/ui/Container";
-import { QaCard } from "@/components/qa/QaCard";
+import { PlayCard } from "@/components/play/PlayCard";
 import { experience } from "@/lib/content";
 import { getCv } from "@/lib/cv";
 import { getAllWork } from "@/lib/work";
@@ -36,7 +36,7 @@ export function Bento() {
         <WhatIDoCard index={7} />
         <WhereCard index={8} />
         <ImpactCard index={9} />
-        <QaCard index={10} cv={getCv()} />
+        <PlayCard index={10} cv={getCv()} />
       </div>
     </Container>
   );

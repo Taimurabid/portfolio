@@ -277,3 +277,20 @@
 :root[data-qa="on"] main * {
   cursor: crosshair;
 }
+
+/* Break mode (components/break): loose cards are dragged, not clicked into. */
+[data-broken] {
+  position: relative;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  translate: none !important;
+}
+
+[data-broken]:active {
+  cursor: grabbing;
+}
+
+[data-broken] * {
+  pointer-events: none;
+}
