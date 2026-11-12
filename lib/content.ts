@@ -56,4 +56,10 @@ export const experience: ExperienceItem[] = [
   { org: "FCCU", role: "BS Computer Science", start: "2019", end: "2019" },
 ];
 
+/** The measured result featured on the bento's Impact card. */
+export const impact = {
+  slug: "viewfi",
+  claim: "Cut ViewFi’s setup time by 30%",
+};
+
 export const availability = "I work US hours and I'm open to remote full-time or contract roles.";

@@ -7,7 +7,7 @@ import { BentoCard } from "@/components/ui/BentoCard";
 import { GridIcon, NextIcon, PauseIcon, PlayIcon, PrevIcon } from "@/components/ui/icons";
 import { useClock } from "@/lib/motion";
 
-export type WorkSlide = {
+type WorkSlide = {
   slug: string;
   title: string;
   role: string;

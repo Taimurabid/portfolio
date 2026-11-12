@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { bugs, cssValue, isFixed, type Bug, type BugValue } from "@/lib/qa/bugs";
 
 const targetOf = (bug: Bug) => document.querySelector<HTMLElement>(`[data-qa="${bug.target}"]`);
@@ -25,11 +25,11 @@ export function useQaGame() {
   const [fixing, setFixing] = useState<Bug | null>(null);
   const [misses, setMisses] = useState(0);
   const [hints, setHints] = useState(0);
-  const startedAt = useRef(0);
+  // QaMode is client-only (loaded with ssr: false), so performance.now() is safe here.
+  const [startedAt] = useState(() => performance.now());
   const [finishedIn, setFinishedIn] = useState<number | null>(null);
 
   useEffect(() => {
-    startedAt.current = performance.now();
     const originals = bugs.map((bug) => {
       const el = targetOf(bug);
       const before = el?.style.getPropertyValue(bug.property) ?? "";
@@ -46,9 +46,9 @@ export function useQaGame() {
 
   useEffect(() => {
     if (fixed.length === bugs.length && finishedIn === null) {
-      setFinishedIn(performance.now() - startedAt.current);
+      setFinishedIn(performance.now() - startedAt);
     }
-  }, [fixed, finishedIn]);
+  }, [fixed, finishedIn, startedAt]);
 
   const setValue = useCallback((bug: Bug, value: BugValue) => {
     targetOf(bug)?.style.setProperty(bug.property, cssValue(bug, value));

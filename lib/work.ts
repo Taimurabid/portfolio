@@ -1,11 +1,11 @@
-import { existsSync, readdirSync, readFileSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 import { cache } from "react";
 import { z } from "zod";
+import { getImageSize } from "./images";
 
 const WORK_DIR = path.join(process.cwd(), "content", "work");
-const PUBLIC_DIR = path.join(process.cwd(), "public");
 
 const imageSchema = z.object({
   src: z.string().startsWith("/", "Image paths are relative to /public, e.g. /work/key3/cover.jpg"),
@@ -13,7 +13,7 @@ const imageSchema = z.object({
 });
 
 /** The contract every file in content/work/*.mdx must satisfy. */
-export const frontmatterSchema = z.object({
+const frontmatterSchema = z.object({
   title: z.string().min(1),
   summary: z.string().min(1).max(120, "Keep the card summary to one line"),
   role: z.string().min(1),
@@ -23,7 +23,7 @@ export const frontmatterSchema = z.object({
   cover: imageSchema,
 });
 
-export type Frontmatter = z.infer<typeof frontmatterSchema>;
+type Frontmatter = z.infer<typeof frontmatterSchema>;
 export type Image = z.infer<typeof imageSchema>;
 
 export type CaseStudy = Frontmatter & {
@@ -31,12 +31,6 @@ export type CaseStudy = Frontmatter & {
   /** Raw MDX body, rendered on the case study page. */
   body: string;
 };
-
-function assertImageExists(file: string, image: Image) {
-  if (!existsSync(path.join(PUBLIC_DIR, image.src))) {
-    throw new Error(`${file}: image not found at public${image.src}`);
-  }
-}
 
 function parseFile(file: string): CaseStudy {
   const raw = readFileSync(path.join(WORK_DIR, file), "utf8");
@@ -49,7 +43,11 @@ function parseFile(file: string): CaseStudy {
     );
   }
 
-  assertImageExists(file, result.data.cover);
+  try {
+    getImageSize(result.data.cover.src);
+  } catch (error) {
+    throw new Error(`content/work/${file}: ${(error as Error).message}`);
+  }
   return { ...result.data, slug: file.replace(/\.mdx$/, ""), body: content };
 }
 

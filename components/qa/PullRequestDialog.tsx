@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import type { Cv } from "@/lib/cv";
 import { bugs, diffLines, formatTime } from "@/lib/qa/bugs";
 import { site } from "@/lib/site";
 
@@ -9,7 +10,7 @@ type PullRequestDialogProps = {
   misses: number;
   hints: number;
   isBest: boolean;
-  cv: { href: string; size: string } | null;
+  cv: Cv | null;
   onReplay: () => void;
   onClose: () => void;
 };

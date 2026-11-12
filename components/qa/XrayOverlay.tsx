@@ -13,6 +13,16 @@ function measure(el: Element): Box {
   return { top: r.top, left: r.left, width: r.width, height: r.height, pad };
 }
 
+function sameBox(a: Box, b: Box): boolean {
+  return (
+    a.top === b.top &&
+    a.left === b.left &&
+    a.width === b.width &&
+    a.height === b.height &&
+    a.pad.every((value, i) => value === b.pad[i])
+  );
+}
+
 /** Figma-style redline box (with padding shaded) that follows an element. */
 export function XrayOverlay({ el, selected }: { el: Element; selected?: boolean }) {
   const [box, setBox] = useState<Box>(() => measure(el));
@@ -20,7 +30,8 @@ export function XrayOverlay({ el, selected }: { el: Element; selected?: boolean 
   useEffect(() => {
     let frame = 0;
     const loop = () => {
-      setBox(measure(el));
+      const next = measure(el);
+      setBox((prev) => (sameBox(prev, next) ? prev : next));
       frame = requestAnimationFrame(loop);
     };
     frame = requestAnimationFrame(loop);

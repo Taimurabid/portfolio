@@ -69,11 +69,6 @@ export const CheckIcon = (p: IconProps) => (
     <path d="M3 8.5 6.5 12 13 4.5" />
   </Icon>
 );
-export const ArrowIcon = (p: IconProps) => (
-  <Icon {...p}>
-    <path d="M3 8h10M9 4l4 4-4 4" />
-  </Icon>
-);
 export const PlayIcon = (p: IconProps) => (
   <Icon {...p} fill="currentColor" stroke="none">
     <path d="M5 3.2v9.6a.6.6 0 0 0 .9.5l7.6-4.8a.6.6 0 0 0 0-1L5.9 2.7a.6.6 0 0 0-.9.5z" />

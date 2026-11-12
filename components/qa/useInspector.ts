@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 const INSPECT = "[data-inspect]";
 const UI = "[data-qa-ui]";
@@ -18,6 +18,11 @@ function inspectable(target: EventTarget | null): Element | null {
 export function useInspector() {
   const [hovered, setHovered] = useState<Element | null>(null);
   const [selected, setSelected] = useState<Element | null>(null);
+  const selectedRef = useRef<Element | null>(null);
+
+  useEffect(() => {
+    selectedRef.current = selected;
+  }, [selected]);
 
   useEffect(() => {
     const onMove = (event: PointerEvent) => setHovered(inspectable(event.target));
@@ -37,12 +42,11 @@ export function useInspector() {
 
   const step = useCallback((direction: 1 | -1) => {
     const all = [...document.querySelectorAll(INSPECT)].filter((el) => !el.closest(UI));
-    setSelected((current) => {
-      const index = current ? all.indexOf(current) : -1;
-      const next = all[(index + direction + all.length) % all.length] ?? null;
-      next?.scrollIntoView({ block: "center", behavior: "smooth" });
-      return next;
-    });
+    const current = selectedRef.current;
+    const index = current ? all.indexOf(current) : -1;
+    const next = all[(index + direction + all.length) % all.length] ?? null;
+    next?.scrollIntoView({ block: "center", behavior: "smooth" });
+    setSelected(next);
   }, []);
 
   return { hovered, selected, setSelected, step };
