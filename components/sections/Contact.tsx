@@ -12,7 +12,7 @@ export function Contact() {
   const cv = getCv();
 
   return (
-    <Section id="contact" index="03" title="Contact">
+    <Section id="contact" index="04" title="Contact">
       <div data-reveal className="max-w-3xl">
         <p className="text-lede text-muted">{availability}</p>
         <a

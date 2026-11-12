@@ -3,7 +3,7 @@ import { about } from "@/lib/content";
 
 export function About() {
   return (
-    <Section id="about" index="02" title="About">
+    <Section id="about" index="03" title="About">
       <p data-reveal className="max-w-3xl text-lede">
         {about}
       </p>
