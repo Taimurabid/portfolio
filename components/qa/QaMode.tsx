@@ -2,6 +2,8 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import type { Cv } from "@/lib/cv";
+import { saveIfBest } from "@/lib/qa/best";
 import { bugs, nudge } from "@/lib/qa/bugs";
 import { describe, readTokens } from "@/lib/qa/inspect";
 import { useMotion } from "@/lib/motion";
@@ -12,10 +14,8 @@ import { useInspector } from "./useInspector";
 import { useQaGame } from "./useQaGame";
 import { XrayOverlay } from "./XrayOverlay";
 
-export const BEST_KEY = "qa-best-ms";
-
 type QaModeProps = {
-  cv: { href: string; size: string } | null;
+  cv: Cv | null;
   onExit: () => void;
   onReplay: () => void;
 };
@@ -44,15 +44,7 @@ export default function QaMode({ cv, onExit, onReplay }: QaModeProps) {
 
   useEffect(() => {
     if (game.finishedIn === null) return;
-    let previous = Infinity;
-    try {
-      previous = Number(localStorage.getItem(BEST_KEY) ?? Infinity);
-      if (game.finishedIn < previous)
-        localStorage.setItem(BEST_KEY, String(Math.round(game.finishedIn)));
-    } catch {
-      // No storage: the score just isn't remembered.
-    }
-    setBest({ isBest: game.finishedIn < previous });
+    setBest({ isBest: saveIfBest(game.finishedIn) });
   }, [game.finishedIn]);
 
   // A fixed bug closes its panel after a beat.
@@ -104,7 +96,7 @@ export default function QaMode({ cv, onExit, onReplay }: QaModeProps) {
       {hovered && hovered !== selected ? <XrayOverlay el={hovered} /> : null}
       {selected ? <XrayOverlay el={selected} selected /> : null}
       <QaHud
-        startedAt={game.startedAt.current}
+        startedAt={game.startedAt}
         fixedCount={game.fixed.length}
         selectedName={selected?.getAttribute("data-inspect") ?? null}
         specs={specs}

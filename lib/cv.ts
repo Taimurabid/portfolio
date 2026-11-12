@@ -2,7 +2,7 @@ import { existsSync, statSync } from "node:fs";
 import path from "node:path";
 
 /** Drop the PDF at public/Taimur-Abid-CV.pdf and every "Download CV" link appears. */
-export const CV_FILE = "Taimur-Abid-CV.pdf";
+const CV_FILE = "Taimur-Abid-CV.pdf";
 
 export type Cv = { href: string; size: string };
 

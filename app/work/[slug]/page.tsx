@@ -5,7 +5,9 @@ import { mdxComponents } from "@/components/mdx/mdx-components";
 import { CaseStudyHeader } from "@/components/sections/CaseStudyHeader";
 import { NextProject } from "@/components/sections/NextProject";
 import { Container } from "@/components/ui/Container";
+import { JsonLd } from "@/components/ui/JsonLd";
 import { site } from "@/lib/site";
+import { caseStudySchema } from "@/lib/structured-data";
 import { getAllWork, getNextWork, getWork } from "@/lib/work";
 
 type PageProps = { params: Promise<{ slug: string }> };
@@ -42,6 +44,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
 
   return (
     <article>
+      <JsonLd data={caseStudySchema(work)} />
       <CaseStudyHeader work={work} />
       <Container className="py-12 sm:py-16">
         <div className="card px-5 sm:px-10 lg:px-14">

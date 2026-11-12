@@ -1,14 +1,3 @@
-const monthYear = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  year: "numeric",
-  timeZone: "UTC",
-});
-
-/** "2023-10" → "Oct 2023"; "2019" → "2019". */
-export function formatPeriod(iso: string): string {
-  return /^\d{4}$/.test(iso) ? iso : monthYear.format(new Date(`${iso}-01T00:00:00Z`));
-}
-
 /** "What I designed/built" → "what-i-designed-built" */
 export function slugify(text: string): string {
   return text
