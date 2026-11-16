@@ -8,7 +8,9 @@ import { getImageSize } from "./images";
 const WORK_DIR = path.join(process.cwd(), "content", "work");
 
 const imageSchema = z.object({
-  src: z.string().startsWith("/", "Image paths are relative to /public, e.g. /work/key3/cover.jpg"),
+  src: z
+    .string()
+    .startsWith("/", "Image paths are relative to /public, e.g. /work/keyflo/cover.jpg"),
   alt: z.string().min(1, "Every image needs alt text"),
 });
 

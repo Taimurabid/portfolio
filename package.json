@@ -14,7 +14,8 @@
     "check": "npm run typecheck && npm run lint && npm run format:check && npm test",
     "test": "vitest run",
     "project-images": "node scripts/project-images.mjs",
-    "avatar": "node scripts/avatar.mjs"
+    "avatar": "node scripts/avatar.mjs",
+    "cv": "node scripts/cv.mjs"
   },
   "dependencies": {
     "@fontsource/inter": "^5.3.0",
