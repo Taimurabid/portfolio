@@ -49,7 +49,7 @@ export function Contact() {
                 Download CV
                 <span aria-hidden="true" className="text-muted group-hover:text-accent">
                   ↓
-                </span>
+                </span>{" "}
                 <span className="text-sm text-muted">PDF · {cv.size}</span>
               </a>
             </li>
