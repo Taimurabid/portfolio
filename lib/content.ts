@@ -1,14 +1,14 @@
 /** Home page copy. Everything here comes from Taimur and his CV; anything unknown is a TODO. */
 
 export const intro = {
-  headline: "Hi I’m Taimur Abid — I’m a Full-Stack Engineer & Product Designer at MGB.",
+  headline: "Hi I’m Taimur Abid — I’m a Full-Stack Engineer & Product Designer.",
   /** Shown in the muted colour after the headline. */
-  previously: " Previously at ViewFi.",
+  previously: " Previously at MGB and ViewFi.",
   bio: "I design products in Figma and build them in React and Next.js. Seven years in, I still do both.",
 };
 
 export const about =
-  "I have a CS degree, but my first paid work was design. Seven years later I still do both, which comes in handy on small teams where whoever designs the screen often ends up building it too. Right now I'm a full-stack engineer and product designer at MGB (Mad Genius Blink), where most of my work is for BlocLabs and its products. Before that I spent two years leading product design at ViewFi.";
+  "I have a CS degree, but my first paid work was design. Seven years later I still do both, which comes in handy on small teams where whoever designs the screen often ends up building it too. Until November 2026 I was a full-stack engineer and product designer at MGB (Mad Genius Blink), where most of my work was for BlocLabs and its products. Before that I spent two years leading product design at ViewFi.";
 
 /** Skills, grouped exactly as on the CV. */
 export const skills: { label: string; items: string[] }[] = [
@@ -87,7 +87,7 @@ export const experience: ExperienceItem[] = [
     org: "MGB (Mad Genius Blink)",
     role: "Full-Stack Engineer & Product Designer",
     start: "2023-10",
-    end: null,
+    end: "2026-11",
   },
   { org: "ViewFi", role: "Product Designer", start: "2021-10", end: "2023-09" },
   {
