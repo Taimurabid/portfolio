@@ -22,11 +22,9 @@ export function WhatIDoCard({ index }: { index: number }) {
           <div key={discipline.title}>
             <dt className="text-[13px] text-muted">{discipline.title}</dt>
             <dd className="mt-1.5 flex flex-wrap gap-1.5">
-              {discipline.groups
-                .flatMap((group) => group.items)
-                .map((item) => (
-                  <Tag key={item}>{item}</Tag>
-                ))}
+              {discipline.highlights.map((item) => (
+                <Tag key={item}>{item}</Tag>
+              ))}
             </dd>
           </div>
         ))}

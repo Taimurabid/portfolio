@@ -1,5 +1,5 @@
 /** schema.org JSON-LD for search engines and AI assistants. */
-import { disciplines } from "./content";
+import { education, skills } from "./content";
 import { site } from "./site";
 import type { CaseStudy } from "./work";
 
@@ -16,8 +16,8 @@ export function personSchema() {
     image: abs("/avatar.jpg"),
     email: `mailto:${site.email}`,
     worksFor: { "@type": "Organization", name: "MGB (Mad Genius Blink)" },
-    alumniOf: { "@type": "CollegeOrUniversity", name: "FCCU" },
-    knowsAbout: disciplines.flatMap((d) => d.groups.flatMap((g) => g.items)),
+    alumniOf: { "@type": "CollegeOrUniversity", name: education.school },
+    knowsAbout: [...new Set(skills.flatMap((group) => group.items))],
     sameAs: Object.values(site.links).filter(Boolean),
   };
 }

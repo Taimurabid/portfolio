@@ -1,26 +1,23 @@
+/** The address on the CV; the older vercel.app URL redirects here. */
+const PRODUCTION_URL = "https://taimur-portfolio-1.vercel.app";
+
 /**
- * Absolute site URL for canonical links, OG images and the sitemap.
- * Set NEXT_PUBLIC_SITE_URL once you have a custom domain; until then Vercel's
- * production URL is used, then localhost.
+ * Absolute site URL for canonical links, OG images, the sitemap and llms.txt.
+ * Always the production address (previews and local builds included), so
+ * nothing ever points search engines at a redirect. Set NEXT_PUBLIC_SITE_URL
+ * to switch to a custom domain.
  */
-function getSiteUrl(): string {
-  if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL;
-  if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
-    return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
-  }
-  return "http://localhost:3000";
-}
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? PRODUCTION_URL;
 
 export const site = {
   name: "Taimur Abid",
   role: "Full-Stack Engineer & Product Designer",
   description: "I design products in Figma and build them in React and Next.js.",
-  url: getSiteUrl(),
+  url: siteUrl,
   email: "taimurmirza717@gmail.com",
   links: {
     linkedin: "https://www.linkedin.com/in/taimur-abid-6b279a259",
-    // TODO: add GitHub profile URL.
-    github: null as string | null,
+    github: "https://github.com/Taimurabid" as string | null,
   },
 } as const;
 

@@ -3,7 +3,7 @@
  * assistants. Rendering is pure (data in, string out) so it is unit-tested;
  * `getLlmsData` gathers the same content the pages use, so they never drift.
  */
-import { about, availability, disciplines, experience } from "./content";
+import { about, availability, experience, skills } from "./content";
 import { getCv } from "./cv";
 import { formatYears } from "./format";
 import { site } from "./site";
@@ -127,10 +127,7 @@ export function getLlmsData(): LlmsData {
       { label: "LinkedIn", href: site.links.linkedin },
       ...(site.links.github ? [{ label: "GitHub", href: site.links.github }] : []),
     ],
-    skills: disciplines.map((d) => ({
-      label: d.title,
-      items: d.groups.flatMap((g) => g.items),
-    })),
+    skills,
     experience: experience.map((e) => ({
       org: e.org,
       role: e.role,
