@@ -19,7 +19,7 @@ export function Figure({ src, alt, caption }: FigureProps) {
           alt={alt}
           width={width}
           height={height}
-          sizes="(min-width: 1152px) 720px, (min-width: 1024px) 66vw, 100vw"
+          sizes="(min-width: 1152px) 800px, (min-width: 1024px) 66vw, 100vw"
           className="h-auto w-full"
         />
       </div>
