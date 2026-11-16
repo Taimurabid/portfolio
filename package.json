@@ -12,8 +12,9 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "check": "npm run typecheck && npm run lint && npm run format:check && npm test",
-    "artwork": "node scripts/artwork.mjs",
-    "test": "vitest run"
+    "test": "vitest run",
+    "project-images": "node scripts/project-images.mjs",
+    "avatar": "node scripts/avatar.mjs"
   },
   "dependencies": {
     "@fontsource/inter": "^5.3.0",
@@ -36,6 +37,7 @@
     "eslint-config-prettier": "^10.1.8",
     "prettier": "^3.10.0",
     "prettier-plugin-tailwindcss": "^0.8.1",
+    "puppeteer-core": "^24.43.1",
     "tailwindcss": "^4",
     "typescript": "^5",
     "vitest": "^5.1.0"

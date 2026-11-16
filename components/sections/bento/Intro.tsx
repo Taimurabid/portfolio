@@ -19,7 +19,7 @@ export function Intro() {
         <div className="grid gap-6 sm:grid-cols-[auto_minmax(0,1fr)] sm:gap-10 bento:pl-[60px]">
           <Image
             src="/avatar.jpg"
-            // Monogram from scripts/artwork.mjs (options in design/avatar-options/).
+            // Monogram from scripts/avatar.mjs (options in design/avatar-options/).
             // To use a photo instead, replace public/avatar.jpg and describe it here.
             alt={`${site.name} monogram`}
             width={145}
