@@ -9,6 +9,10 @@ const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
   },
+  // The Key3 case study was replaced by Keyflo; keep old links working.
+  async redirects() {
+    return [{ source: "/work/key3", destination: "/work/keyflo", permanent: true }];
+  },
 };
 
 export default nextConfig;

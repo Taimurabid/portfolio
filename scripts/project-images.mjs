@@ -4,7 +4,7 @@
  *   public/work/<slug>/screen-0N.jpg  real sections of the site, for the case study
  *
  *   npm run project-images            # all projects
- *   npm run project-images -- key3    # just one
+ *   npm run project-images -- keyflo   # just one
  *
  * Uses your installed Google Chrome through puppeteer-core (no browser download).
  * Cookie banners are declined, floating chat widgets are hidden, and every shot
@@ -47,24 +47,24 @@ const projects = {
       { anchor: "Core Values Driving", out: "screen-03" },
     ],
   },
-  key3: {
-    url: "https://key3.io",
-    backdrop: ["#0c2a22", "#0e0f10"],
+  keyflo: {
+    url: "https://keyflo.app",
+    backdrop: ["#3a1a0c", "#0d0d0f"],
     shots: [
       { y: 0, out: "cover" },
       {
-        anchor: "Key3 Features",
-        offset: 60,
+        anchor: "Money shouldn",
+        offset: 170,
         out: "screen-01",
-        crop: { left: 0, top: 0, width: 2880, height: 1400 },
+        crop: { left: 0, top: 0, width: 2880, height: 1700 },
       },
       {
-        anchor: "Secure & Trusted",
-        offset: 60,
+        anchor: "How do I get started",
+        offset: 170,
         out: "screen-02",
-        crop: { left: 0, top: 0, width: 2880, height: 1320 },
+        crop: { left: 0, top: 0, width: 2880, height: 1300 },
       },
-      { y: 0, out: "screen-03", crop: { left: 1560, top: 420, width: 1180, height: 1260 } },
+      { y: 0, out: "screen-03", crop: { left: 1480, top: 260, width: 1140, height: 1240 } },
     ],
   },
   viewfi: {
