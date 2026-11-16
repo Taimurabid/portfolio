@@ -15,7 +15,6 @@ export function personSchema() {
     url: site.url,
     image: abs("/avatar.jpg"),
     email: `mailto:${site.email}`,
-    worksFor: { "@type": "Organization", name: "MGB (Mad Genius Blink)" },
     alumniOf: { "@type": "CollegeOrUniversity", name: education.school },
     knowsAbout: [...new Set(skills.flatMap((group) => group.items))],
     sameAs: Object.values(site.links).filter(Boolean),
