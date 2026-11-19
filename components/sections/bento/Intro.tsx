@@ -31,34 +31,41 @@ export function Intro() {
             className="size-24 rounded-[11px] object-cover sm:size-[145px]"
           />
           <div className="min-w-0 bento:pt-2.5">
+            <div data-enter style={enter(1)} className="mb-4">
+              <AvailablePill />
+            </div>
             <h1
               id="intro-heading"
               data-inspect="Headline"
               data-qa="headline"
               data-enter="lift"
-              style={enter(1)}
+              style={enter(2)}
               className="max-w-[900px] text-headline"
             >
               {intro.headline}
-              <span className="text-faint">{intro.previously}</span>
             </h1>
             <p
               data-enter="lift"
               data-inspect="Bio"
-              style={enter(2)}
+              style={enter(3)}
               className="mt-4 max-w-[790px] text-bio text-muted sm:mt-5"
             >
               {intro.bio}
             </p>
             <div className="mt-6 flex flex-wrap gap-3 sm:gap-[25px] bento:mt-[22px]">
-              <div data-enter style={enter(3)} className="w-full max-w-[495px]">
+              <div data-enter style={enter(4)} className="w-full max-w-[495px]">
                 <EmailPill email={site.email} />
               </div>
-              <div data-enter style={enter(4)}>
-                <AvailablePill />
+              <div data-enter style={enter(5)}>
+                <a
+                  href="#work"
+                  className="inline-flex h-[53px] items-center gap-2 rounded-full bg-segment px-5 text-[15px] whitespace-nowrap text-segment-fg shadow-card transition-opacity hover:opacity-90"
+                >
+                  See my work <span aria-hidden="true">→</span>
+                </a>
               </div>
               {cv ? (
-                <div data-enter style={enter(5)}>
+                <div data-enter style={enter(6)}>
                   <CvPill cv={cv} />
                 </div>
               ) : null}

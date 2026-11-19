@@ -1,52 +1,50 @@
 ---
-title: Keyflo
-summary: A mobile keyboard app for sending stablecoin payments without leaving the app you're typing in.
-role: Mobile product designer
-tags: [Mobile, Crypto payments, End-to-end UX]
-order: 3
+title: KeyFlo
+summary: iOS keyboard for sending crypto
+role: Design + backend
+tags: [iOS, Backend, Crypto payments]
+order: 2
 link: https://keyflo.app
 cover:
   src: /work/keyflo/cover.jpg
-  alt: 'Keyflo homepage (keyflo.app) shown in a browser window: "Send and manage money directly where you type", with the Keyflo keyboard open on two phones'
+  alt: 'KeyFlo homepage (keyflo.app) shown in a browser window: "Send and manage money directly where you type", with the KeyFlo keyboard open on two phones'
 ---
 
 <CaseSection title="Overview">
 
-Keyflo is a mobile keyboard with an embedded crypto wallet, so people can send stablecoin payments without leaving the app they're typing in.
+KeyFlo is a keyboard app that lets people send crypto without leaving the app they're typing in.
 
 </CaseSection>
 
 <CaseSection title="My role">
 
-I designed the end-to-end mobile experience, from first-time setup to sending and confirming a transaction, with a focus on making crypto transfers feel as simple as sending a message.
+Designed the iOS experience and built the backend.
 
 </CaseSection>
 
 <CaseSection title="The problem">
-  {/* TODO: why sending money mid-conversation was hard before Keyflo. */}
+
+Sending crypto usually means switching to a wallet app, copying addresses and switching back. KeyFlo puts it in the keyboard.
+
 </CaseSection>
 
-<CaseSection title="Process">{/* TODO: how you worked through the flows. */}</CaseSection>
+<CaseSection title="What I did">
 
-<CaseSection title="What I designed">
-
-- First-time setup
-- Sending a transaction
-- Confirming a transaction
+I designed the full flow, from first-time setup to sending and confirming a transaction, so it feels as simple as sending a message. On the backend I built the services for WalletConnect wallet connections, blockchain API calls, smart contract interactions and push notifications.
 
 <Figure
   src="/work/keyflo/screen-03.jpg"
-  alt="Two phones with the Keyflo keyboard open in a messaging app: one shows the wallet balance with Send and Receive buttons, the other a filled-in send form with a Continue button"
-  caption="The Keyflo keyboard inside a chat: balance, send and confirm"
+  alt="Two phones with the KeyFlo keyboard open in a messaging app: one shows the wallet balance with Send and Receive buttons, the other a filled-in send form with a Continue button"
+  caption="The KeyFlo keyboard inside a chat: balance, send and confirm"
 />
 <Figure
   src="/work/keyflo/screen-01.jpg"
-  alt="Keyflo site section “Money shouldn’t interrupt the moment”, listing uses like paying friends and settling shared expenses next to a chat demo"
+  alt="KeyFlo site section “Money shouldn’t interrupt the moment”, listing uses like paying friends and settling shared expenses next to a chat demo"
   caption="keyflo.app: payments that happen inside the conversation"
 />
 <Figure
   src="/work/keyflo/screen-02.jpg"
-  alt='Keyflo site section "How do I get started with Keyflo?", with five setup steps from installing the app to switching to the Keyflo keyboard'
+  alt='KeyFlo site section "How do I get started with KeyFlo?", with five setup steps from installing the app to switching to the KeyFlo keyboard'
   caption="keyflo.app: getting started in five steps"
 />
 
@@ -54,12 +52,16 @@ See it live at [keyflo.app](https://keyflo.app).
 
 </CaseSection>
 
-<CaseSection title="Results">{/* TODO: results. Only add measured outcomes. */}</CaseSection>
-
-<CaseSection title="Tools">
+<CaseSection title="Stack">
 
 - Figma
-- Mobile app design
-- Prototyping
+- Swift
+- Node.js
+- NestJS
+- PostgreSQL
+- Redis
+- WalletConnect
+- Ethers.js
+- AWS
 
 </CaseSection>

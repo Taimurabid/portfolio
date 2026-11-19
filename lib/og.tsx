@@ -33,7 +33,7 @@ type OgImageProps = {
   title: string;
   /** Rendered in the accent color. */
   subtitle?: string;
-  description: string;
+  description?: string;
 };
 
 /** Shared 1200×630 Open Graph card for every page. */
@@ -78,17 +78,19 @@ export async function renderOgImage({ eyebrow, title, subtitle, description }: O
             {subtitle}
           </div>
         ) : null}
-        <div
-          style={{
-            marginTop: 28,
-            maxWidth: 920,
-            fontSize: 32,
-            lineHeight: 1.4,
-            color: colors.muted,
-          }}
-        >
-          {description}
-        </div>
+        {description ? (
+          <div
+            style={{
+              marginTop: 28,
+              maxWidth: 920,
+              fontSize: 32,
+              lineHeight: 1.4,
+              color: colors.muted,
+            }}
+          >
+            {description}
+          </div>
+        ) : null}
       </div>
     </div>,
     { ...ogSize, fonts: await loadFonts() },

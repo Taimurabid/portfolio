@@ -12,7 +12,8 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? PRODUCTION_URL;
 export const site = {
   name: "Taimur Abid",
   role: "Full-Stack Engineer & Product Designer",
-  description: "I design products in Figma and build them in React and Next.js.",
+  description:
+    "Full-stack engineer and product designer with 7 years building SaaS, Web3 and AI products. React, Next.js, Node.js, NestJS, PostgreSQL. Available for remote roles.",
   url: siteUrl,
   email: "taimurmirza717@gmail.com",
   links: {

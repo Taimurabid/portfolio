@@ -43,7 +43,7 @@ const fixture: LlmsData = {
   email: "ada@example.com",
   links: [{ label: "LinkedIn", href: "https://linkedin.com/in/ada" }],
   skills: [{ label: "Design", items: ["Figma"] }],
-  experience: [{ org: "Acme", role: "Designer", years: "2020 – now" }],
+  experience: [{ org: "Acme", role: "Designer", years: "2020 – now", summary: "Made things." }],
   work: [
     {
       slug: "alpha",
@@ -62,7 +62,7 @@ describe("renderLlmsTxt", () => {
   const text = renderLlmsTxt(fixture);
 
   it("follows the llms.txt shape: H1, blockquote, then link sections", () => {
-    expect(text.startsWith("# Ada\n\n> Designer. I design things.")).toBe(true);
+    expect(text.startsWith("# Ada\n\n> I design things.")).toBe(true);
     expect(text).toContain("- [Alpha](https://example.com/work/alpha): An app. Role: Lead.");
     expect(text).toContain("- CV (PDF): https://example.com/cv.pdf");
     expect(text).toContain("(https://example.com/llms-full.txt)");

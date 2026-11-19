@@ -24,6 +24,7 @@ function Timeline({ items, hidden = false }: { items: ExperienceItem[]; hidden?:
           <p className="mt-0.5 text-[13px] text-muted tabular-nums">
             {formatYears(item.start, item.end)}
           </p>
+          <p className="mt-1 text-[13px] leading-snug text-muted">{item.summary}</p>
         </li>
       ))}
     </ol>
