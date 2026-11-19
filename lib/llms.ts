@@ -19,7 +19,7 @@ export type LlmsData = {
   email: string;
   links: { label: string; href: string }[];
   skills: { label: string; items: string[] }[];
-  experience: { org: string; role: string; years: string }[];
+  experience: { org: string; role: string; years: string; summary: string }[];
   work: Pick<CaseStudy, "slug" | "title" | "summary" | "role" | "tags" | "link" | "body">[];
   cvUrl: string | null;
 };
@@ -45,25 +45,20 @@ export function mdxToMarkdown(body: string): string {
     .trim();
 }
 
+/** Card summaries are short phrases; end them with a full stop in prose. */
+const sentence = (text: string) => (/[.!?]$/.test(text) ? text : `${text}.`);
+
 const abs = (data: LlmsData, path: string) => new URL(path, data.url).toString();
 
 function header(data: LlmsData): string[] {
-  return [
-    `# ${data.name}`,
-    "",
-    `> ${data.role}. ${data.description}`,
-    "",
-    data.about,
-    "",
-    data.availability,
-  ];
+  return [`# ${data.name}`, "", `> ${data.description}`, "", data.about, "", data.availability];
 }
 
 function profile(data: LlmsData): string[] {
   return [
     "## Experience",
     "",
-    ...data.experience.map((e) => `- ${e.org}: ${e.role}, ${e.years}`),
+    ...data.experience.map((e) => `- ${e.org}: ${e.role}, ${e.years}. ${e.summary}`),
     "",
     "## Skills",
     "",
@@ -84,7 +79,8 @@ export function renderLlmsTxt(data: LlmsData): string {
     "## Case studies",
     "",
     ...data.work.map(
-      (w) => `- [${w.title}](${abs(data, `/work/${w.slug}`)}): ${w.summary} Role: ${w.role}.`,
+      (w) =>
+        `- [${w.title}](${abs(data, `/work/${w.slug}`)}): ${sentence(w.summary)} Role: ${w.role}.`,
     ),
     "",
     ...profile(data),
@@ -120,7 +116,7 @@ export function getLlmsData(): LlmsData {
     role: site.role,
     description: site.description,
     url: site.url,
-    about,
+    about: about.join("\n\n"),
     availability,
     email: site.email,
     links: [
@@ -132,6 +128,7 @@ export function getLlmsData(): LlmsData {
       org: e.org,
       role: e.role,
       years: formatYears(e.start, e.end),
+      summary: e.summary,
     })),
     work: getAllWork(),
     cvUrl: cv?.href ?? null,

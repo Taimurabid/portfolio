@@ -1,61 +1,41 @@
 /** Home page copy. Everything here comes from Taimur and his CV; anything unknown is a TODO. */
 
 export const intro = {
-  headline: "Hi I’m Taimur Abid — I’m a Full-Stack Engineer & Product Designer.",
-  /** Shown in the muted colour after the headline. */
-  previously: " Previously at MGB and ViewFi.",
-  bio: "I design products in Figma and build them in React and Next.js. Seven years in, I still do both.",
+  headline: "I design products and build them, front to back.",
+  bio: "Full-stack engineer and product designer. Figma, React and Next.js on the front, Node.js, NestJS and PostgreSQL on the back, with Web3 and AI where the product needs them. 7 years shipping SaaS, Web3 and creator products.",
 };
 
-export const about =
-  "I have a CS degree, but my first paid work was design. Seven years later I still do both, which comes in handy on small teams where whoever designs the screen often ends up building it too. Until November 2026 I was a full-stack engineer and product designer at MGB (Mad Genius Blink), where most of my work was for BlocLabs and its products. Before that I spent two years leading product design at ViewFi.";
+/** About section, one string per paragraph. */
+export const about = [
+  "I have a CS degree, but my first paid work was design. Seven years later I still do both, and now I build the backend too. On small teams that means one person can take a feature from a Figma file to a working API and a shipped screen, without anything getting lost in between.",
+  "Most recently I was a full-stack engineer and product designer at MGB (Mad Genius Blink), where I designed and built FabricBloc and KeyFlo for BlocLabs. Before that I was Lead Product Designer at ViewFi, where an onboarding redesign cut creator setup time by 30%.",
+  "I work US hours from Lahore and I'm open to remote full-time or contract roles.",
+];
 
-/** Skills, grouped exactly as on the CV. */
+/** Skills, grouped as on the website copy (the CV has the longer list). */
 export const skills: { label: string; items: string[] }[] = [
   {
     label: "Design",
     items: [
-      "Figma",
-      "UI/UX Design",
-      "Wireframing",
+      "Product design",
+      "UX/UI",
+      "User research",
+      "Usability testing",
+      "Design systems",
       "Prototyping",
-      "Design Systems",
-      "User Research",
-      "Mobile App Design",
+      "Branding",
+      "Figma",
       "Webflow",
     ],
   },
-  {
-    label: "Frontend",
-    items: [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "TypeScript",
-      "React",
-      "Next.js",
-      "Tailwind CSS",
-      "Responsive Design",
-    ],
-  },
+  { label: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Swift"] },
   {
     label: "Backend",
-    items: [
-      "Node.js",
-      "Express",
-      "Python",
-      "FastAPI",
-      "REST APIs",
-      "PostgreSQL",
-      "MongoDB",
-      "Supabase",
-    ],
+    items: ["Node.js", "NestJS", "Express", "REST", "GraphQL", "PostgreSQL", "Redis", "Webhooks"],
   },
-  {
-    label: "AI",
-    items: ["Python", "OpenAI API", "Claude API", "LangChain", "RAG", "Prompt Engineering"],
-  },
-  { label: "Tools", items: ["Claude Code", "Git", "GitHub", "Vercel", "Jira", "Agile/Scrum"] },
+  { label: "Cloud", items: ["AWS", "Docker", "Vercel"] },
+  { label: "Web3", items: ["Solidity", "Ethers.js", "Web3.js", "WalletConnect", "Privy"] },
+  { label: "AI", items: ["OpenAI API", "Claude API", "MCP", "Claude Code"] },
 ];
 
 /**
@@ -80,6 +60,8 @@ export type ExperienceItem = {
   /** ISO year or year-month, used for <time dateTime>. `end: null` means present. */
   start: string;
   end: string | null;
+  /** One line on what the role was about. */
+  summary: string;
 };
 
 export const experience: ExperienceItem[] = [
@@ -88,19 +70,31 @@ export const experience: ExperienceItem[] = [
     role: "Full-Stack Engineer & Product Designer",
     start: "2023-10",
     end: "2026-11",
+    summary:
+      "Designed and built FabricBloc and KeyFlo for BlocLabs, from Figma to NestJS APIs on AWS, plus AI features with OpenAI, Claude and MCP.",
   },
-  { org: "ViewFi", role: "Product Designer", start: "2021-10", end: "2023-09" },
   {
-    org: "Freelance on Fiverr",
+    org: "ViewFi",
+    role: "Lead Product Designer",
+    start: "2021-10",
+    end: "2023-09",
+    summary:
+      "Led design for a reward-based video ad platform; cut creator setup time by 30%, and worked on its payments, wallet and video services.",
+  },
+  {
+    org: "Fiverr",
     role: "Freelance UI/UX Designer",
     start: "2019-08",
     end: "2021-09",
+    summary:
+      "100+ projects for international clients: websites, app screens, logos and brand guides.",
   },
   {
     org: "Forman Christian College (FCCU)",
     role: "BS Computer Science",
     start: "2019",
     end: "2019",
+    summary: "Graduated in Lahore.",
   },
 ];
 
@@ -110,4 +104,7 @@ export const impact = {
   claim: "Cut ViewFi’s setup time by 30%",
 };
 
-export const availability = "I work US hours and I'm open to remote full-time or contract roles.";
+export const availability =
+  "I work US hours and I'm available now for remote full-time or contract roles.";
+
+export const contactHeading = "Let’s build something.";

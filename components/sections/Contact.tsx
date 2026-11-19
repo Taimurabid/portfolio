@@ -1,5 +1,6 @@
 import { Section } from "@/components/ui/Section";
-import { availability } from "@/lib/content";
+import { CopyEmailButton } from "@/components/ui/CopyEmailButton";
+import { availability, contactHeading } from "@/lib/content";
 import { getCv } from "@/lib/cv";
 import { site } from "@/lib/site";
 
@@ -14,13 +15,20 @@ export function Contact() {
   return (
     <Section id="contact" index="04" title="Contact">
       <div data-reveal className="max-w-3xl">
-        <p className="text-lede text-muted">{availability}</p>
-        <a
-          href={`mailto:${site.email}`}
-          className="mt-8 inline-block text-[clamp(1.375rem,0.9rem+2.6vw,2.75rem)] leading-tight font-medium tracking-[-0.025em] [overflow-wrap:anywhere] underline decoration-border decoration-1 underline-offset-[0.2em] transition-colors hover:text-accent hover:decoration-accent"
-        >
-          {site.email}
-        </a>
+        <h3 className="text-h3">{contactHeading}</h3>
+        <p className="mt-3 text-lede text-muted">{availability}</p>
+        <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2">
+          <a
+            href={`mailto:${site.email}`}
+            className="inline-block text-[clamp(1.375rem,0.9rem+2.6vw,2.75rem)] leading-tight font-medium tracking-[-0.025em] [overflow-wrap:anywhere] underline decoration-border decoration-1 underline-offset-[0.2em] transition-colors hover:text-accent hover:decoration-accent"
+          >
+            {site.email}
+          </a>
+          <CopyEmailButton
+            email={site.email}
+            className="inline-flex h-10 items-center gap-1.5 rounded-full border border-border px-4 text-sm text-muted transition-colors hover:bg-chip hover:text-fg"
+          />
+        </div>
         <ul className="mt-10 flex flex-wrap gap-x-8 gap-y-3">
           {profileLinks.map((link) => (
             <li key={link.label}>

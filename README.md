@@ -50,11 +50,10 @@ Open [http://localhost:3000](http://localhost:3000).
 | `npm run check`                 | Typecheck, lint, format check and tests: run this before a PR            |
 | `npm test`                      | Unit tests (Vitest)                                                      |
 | `npm run format`                | Format everything with Prettier                                          |
-| `npm run cv`                    | Print `design/cv/cv.html` to `public/Taimur-Abid-CV.pdf`                 |
 | `npm run project-images [slug]` | Recapture a project's cover and screenshots from its live site           |
 | `npm run avatar`                | Generate avatar options (`-- --force` also rewrites `public/avatar.jpg`) |
 
-`cv` and `project-images` drive your installed Google Chrome through `puppeteer-core`. Set `CHROME_PATH` if Chrome isn't in the default macOS location.
+`project-images` drives your installed Google Chrome through `puppeteer-core`. Set `CHROME_PATH` if Chrome isn't in the default macOS location.
 
 ## Project structure
 
@@ -67,17 +66,16 @@ components/
   playground/        Sketch → Component
   ui/                Small shared building blocks
 content/work/        One .mdx file per case study
-design/cv/           HTML source of the CV
 lib/                 Site config, content, MDX loading, motion clock, game and sketch logic
 public/              CV PDF, avatar and project images (public/work/<slug>/)
-scripts/             CV, project-image and avatar generators
+scripts/             Project-image and avatar generators
 ```
 
 ## Editing content
 
 - **Name, role, links, email:** `lib/site.ts`
 - **Intro, about, skills, experience, education:** `lib/content.ts`
-- **CV:** edit `design/cv/cv.html`, then run `npm run cv`. Keep it in step with `lib/content.ts`.
+- **CV:** replace `public/Taimur-Abid-CV.pdf` with the new PDF (same file name). Every Download CV button picks it up, with its file size, on the next build.
 
 ### Adding a case study
 
